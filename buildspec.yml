@@ -14,6 +14,7 @@ phases:
       - echo ${CODEBUILD_SRC_DIR}
       - echo ${SRC_DIR}
       - mv ${CODEBUILD_SRC_DIR}/* ${SRC_DIR}/
+      - cp ${SRC_DIR}/appspec.yml appspec.yml
       - cd ${SRC_DIR}
       - /go/bin/./dep ensure
   build:
@@ -27,5 +28,5 @@ phases:
 artifacts:
   files:
     - appspec.yml
-    - bin/**/*
-    - scripts/**
+    - ${SRC_DIR}/bin/**/*
+    - ${SRC_DIR}/scripts/**
