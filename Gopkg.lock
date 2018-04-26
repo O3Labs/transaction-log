@@ -40,7 +40,7 @@
     "neoutils/rfc6979",
     "neoutils/smartcontract"
   ]
-  revision = "446557b6b8976bfec648a2be07baa7d3c5209941"
+  revision = "1ed061123a58f17a10cb213145d2809d212c6050"
 
 [[projects]]
   branch = "master"
