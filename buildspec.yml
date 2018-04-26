@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    SRC_DIR: github.com/o3labs/transaction-log
+    SRC_DIR: /go/src/github.com/o3labs/transaction-log
 
 phases:
   install:
@@ -11,7 +11,7 @@ phases:
   pre_build:
     commands:
       - mkdir -p ${SRC_DIR}
-      - mv * ${SRC_DIR}
+      - mv * ${SRC_DIR}/
       - cd /${SRC_DIR}
       - /go/bin/./dep ensure
   build:
