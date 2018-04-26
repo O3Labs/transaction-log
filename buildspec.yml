@@ -15,18 +15,20 @@ phases:
       - echo ${SRC_DIR}
       - mv ${CODEBUILD_SRC_DIR}/* ${SRC_DIR}/
       - cp ${SRC_DIR}/appspec.yml appspec.yml
+      - cp -r ${SRC_DIR}/scripts scripts
       - cd ${SRC_DIR}
       - /go/bin/./dep ensure
   build:
     commands:
-      - go build -o bin/transaction-log/transaction-log main.go
-      - go build -o bin/transaction-log/transaction-log-consumer  consumer/main.go
-      - cp config*.json bin/transaction-log/
+      - go build -o bin/transaction-log main.go
+      - go build -o bin/transaction-log-consumer  consumer/main.go
+      - cp config*.json bin/
+      - cp -r bin/ /
   post_build:
     commands:
       - echo Build completed on `date`
 artifacts:
   files:
     - appspec.yml
-    - ${SRC_DIR}/bin/**/*
-    - ${SRC_DIR}/scripts/**
+    - scripts/*
+    - bin/**/*
