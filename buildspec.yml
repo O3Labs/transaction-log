@@ -23,7 +23,8 @@ phases:
       - go build -o bin/transaction-log main.go
       - go build -o bin/transaction-log-consumer  consumer/main.go
       - cp config*.json bin/
-      - cp -r bin/ /
+      - cp -r bin/ ${CODEBUILD_SRC_DIR}
+      - ls ${CODEBUILD_SRC_DIR}
   post_build:
     commands:
       - echo Build completed on `date`
