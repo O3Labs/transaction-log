@@ -7,6 +7,9 @@ env:
 phases:
   install:
      commands:
+      - mkdir ${CODEBUILD_SRC_DIR}/${SRC_DIR}
+      - mv ${CODEBUILD_SRC_DIR}/* ${CODEBUILD_SRC_DIR}/${SRC_DIR}
+      - cd ${CODEBUILD_SRC_DIR}/${SRC_DIR}
       - chmod +x /go/bin/dep
   pre_build:
     commands:
