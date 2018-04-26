@@ -1,0 +1,10 @@
+{
+	"websocketPort": 8080,
+	"seedList": [
+		"127.0.0.1:20333"
+	],
+	"rpcSeedList":[
+		"http://127.0.0.1:30333"
+	],
+	"magic":56753
+}
