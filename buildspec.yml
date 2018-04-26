@@ -10,9 +10,9 @@ phases:
       - chmod +x /go/bin/dep
   pre_build:
     commands:
-      - /go/bin/./dep ensure
   build:
     commands:
+      - /go/bin/./dep ensure
       - go build -o bin/transaction-log/transaction-log main.go
       - go build -o bin/transaction-log/transaction-log-consumer  consumer/main.go
       - cp config*.json bin/transaction-log/
