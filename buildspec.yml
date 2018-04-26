@@ -26,5 +26,5 @@ phases:
       - echo Build completed on `date`
 artifacts:
   files:
-    - bin/**/*
-    - scripts/**
+    - ${SRC_DIR}/bin/**/*
+    - ${SRC_DIR}/scripts/**
