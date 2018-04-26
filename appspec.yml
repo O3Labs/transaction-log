@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: src/github.com/o3labs/transaction-log
+    destination: /var/github.com/o3labs/transaction-log
 overwrite: true
 hooks:
   ApplicationStart:
