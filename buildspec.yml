@@ -7,12 +7,15 @@ env:
 phases:
   install:
      commands:
-      - chmod +x /go/bin/dep
+      - go get -u github.com/golang/dep/cmd/dep
+      - type dep && dep version
   pre_build:
     commands:
+      - mkdir -p ${GOPATH}/${SRC_DIR} && cd ${GOPATH}/${SRC_DIR}
+      - mv ${CODEBUILD_SRC_DIR}/* ${CODEBUILD_SRC_DIR}/.??* .
+      - dep ensure
   build:
     commands:
-      - /go/bin/./dep ensure
       - go build -o bin/transaction-log/transaction-log main.go
       - go build -o bin/transaction-log/transaction-log-consumer  consumer/main.go
       - cp config*.json bin/transaction-log/
