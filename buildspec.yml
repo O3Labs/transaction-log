@@ -1,0 +1,35 @@
+version: 0.2
+
+env:
+  variables:
+    GO_VERSION: 1.9.2
+    SRC_DIR: src/github.com/o3labs/transaction-log
+
+phases:
+  install:
+     commands:
+      # Install Golang
+      - curl -sSL -o /tmp/go.tar.gz https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz
+      - tar -C /usr/local -xzf /tmp/go.tar.gz
+      - export GOPATH=${HOME}/go && echo ${GOPATH}
+      - export PATH=/usr/local/go/bin:${GOPATH}/bin:${PATH} && echo ${PATH}
+      - type go && go version
+      # Install dep tool
+      - go get -u github.com/golang/dep/cmd/dep
+      - type dep && dep version
+  pre_build:
+    commands:
+      - mkdir -p ${GOPATH}/${SRC_DIR} && cd ${GOPATH}/${SRC_DIR}
+      - mv ${CODEBUILD_SRC_DIR}/* ${CODEBUILD_SRC_DIR}/.??* .
+      - dep ensure
+  build:
+    commands:
+      - go build -o bin/transaction-log/transaction-log main.go
+      - go build -o bin/transaction-log/transaction-log-consumer  consumer/main.go
+      - cp config*.json bin/transaction-log/
+  post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - bin/**/*
