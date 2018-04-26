@@ -2,18 +2,11 @@ version: 0.2
 
 env:
   variables:
-    GO_VERSION: 1.9.2
     SRC_DIR: src/github.com/o3labs/transaction-log
 
 phases:
   install:
      commands:
-      # Install Golang
-      - curl -sSL -o /tmp/go.tar.gz https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz
-      - tar -C /usr/local -xzf /tmp/go.tar.gz
-      - export GOPATH=${HOME}/go && echo ${GOPATH}
-      - export PATH=/usr/local/go/bin:${GOPATH}/bin:${PATH} && echo ${PATH}
-      - type go && go version
       # Install dep tool
       - go get -u github.com/golang/dep/cmd/dep
       - type dep && dep version
@@ -33,3 +26,4 @@ phases:
 artifacts:
   files:
     - bin/**/*
+    - scripts/**
