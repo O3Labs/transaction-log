@@ -28,3 +28,4 @@ artifacts:
   files:
     - ${SRC_DIR}/bin/**/*
     - ${SRC_DIR}/scripts/**
+    - ${SRC_DIR}/appspec.yml
