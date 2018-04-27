@@ -40,13 +40,13 @@
     "neoutils/rfc6979",
     "neoutils/smartcontract"
   ]
-  revision = "1ed061123a58f17a10cb213145d2809d212c6050"
+  revision = "273eed0a0a7963dd1083d67b79438660573d28cf"
 
 [[projects]]
   branch = "master"
   name = "golang.org/x/crypto"
   packages = ["ripemd160"]
-  revision = "b0697eccbea9adec5b7ba8008f4c33d98d733388"
+  revision = "b49d69b5da943f7ef3c9cf91c8777c1f78a0cc3c"
 
 [solve-meta]
   analyzer-name = "dep"

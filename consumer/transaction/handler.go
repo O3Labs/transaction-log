@@ -36,7 +36,7 @@ func (h *MessageHandler) HandleMessage(message *nsq.Message) error {
 		if result.Result.Type == "InvocationTransaction" {
 			log.Printf("txid = %v", tx.TXID)
 			parser := smartcontract.NewParserWithScript(result.Result.Script)
-			scripts, err := parser.GetListOfScriptHashes()
+			scripts, err := parser.FindScriptHashes()
 			if err == nil {
 				log.Printf("scripthash = %+v", scripts)
 			}
